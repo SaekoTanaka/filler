@@ -6,8 +6,10 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/10 12:52:25 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/10 13:13:15 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-$$$ exec pPLAYER_NUMBER : [PLAYER_NAME]
+//$$$ exec pPLAYER_NUMBER : [PLAYER_NAME]
+
+
