@@ -13,3 +13,7 @@
 //$$$ exec pPLAYER_NUMBER : [PLAYER_NAME]
 
 
+int	main()
+{
+	
+}
