@@ -1,6 +1,6 @@
 #include "filler.h"
 
-int			**algo(t_info *info)
+int			**init_map(t_info *info)
 {
 	int		**map;
 	int		i;
@@ -16,4 +16,11 @@ int			**algo(t_info *info)
 			return (NULL);
 		i++;
 	}
+	return (map);
 }
+
+int		make_heatmap(int **map)
+{
+	
+}
+

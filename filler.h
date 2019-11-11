@@ -7,6 +7,7 @@ typedef struct	s_info
 {
 	int			size_x;
 	int			size_y;
+	int			x_or_o;
 }				t_info;
 
 #endif
