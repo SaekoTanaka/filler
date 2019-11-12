@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:38 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/12 14:22:59 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/12 14:29:28 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void	get_each_line_info(t_info *info, int **map, char *line, int y)
 	char	**split;
 
 	split = ft_strsplit(line, ' ');
+	if (split[1] == NULL)
+		return ;
 	x = 0;
-	while (split[1][x] != '\n')
+	while (split[1][x] != '\0')
 	{
 		if (split[1][x] == '.')
 			map[y][x] = 0;
@@ -87,7 +89,7 @@ void	make_heatmap(int **map, t_info *info)
 	int		y;
 
 	y = 0;
-	while (get_next_line(info->fd, &line) > 0)
+	while (get_next_line(1, &line) > 0)
 	{
 		get_each_line_info(info, map, line, y);
 		free(line);
@@ -96,7 +98,7 @@ void	make_heatmap(int **map, t_info *info)
 	put_heatmap_info(map, info);
 }
 
-void	position_shape(int **map, t_info *info)
+void	shape_position(int **map, t_info *info)
 {
 
 }

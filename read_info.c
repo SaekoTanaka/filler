@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:21 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/12 14:24:58 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/12 14:28:29 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ t_info  	*read_info_from_map(void)
 			add_size_info(line, info, 0);
 		else if (ft_strncmp(line, "Piece ", 6) == 0)
 			info->piece_map = add_piece_info(line, info);
+		else
+			make_heatmap(line, info);
 		free(line);
 	}
 	return (info);
