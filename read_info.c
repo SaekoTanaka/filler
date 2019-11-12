@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/12 12:22:08 by stanaka          ###   ########.fr       */
+/*   Created: 2019/11/12 12:10:21 by stanaka           #+#    #+#             */
+/*   Updated: 2019/11/12 12:25:38 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//$$$ exec pPLAYER_NUMBER : [PLAYER_NAME]
-
 #include "filler.h"
 
-int	main(int ac, char **av)
+t_info  *read_info_from_map(void)
 {
-	t_info	*info;
-	int		**map;
-	
-	while (1)
-	{
-		info = read_info_from_map();
-		map = init_map(info);
-	}
-	return (0);
+    char    *line;
+    t_info  *info;
+    
+    info = malloc(sizeof(t_info));
+    while (get_next_line(1, &line) > 0)
+    {
+        if (ft_strcmp())
+    }
+    return (info);
 }
