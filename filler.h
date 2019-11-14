@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:35 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/13 17:53:20 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 10:40:41 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ typedef struct	s_info
 //algo.c
 int		**init_map(t_info *info);
 void	get_each_line_info(t_info *info, char *line, int y);
-void	check_the_value(int y, int **map, t_info *info, int v);
-void	put_heatmap_info(int **map, t_info *info);
-void	make_heatmap(int **map, t_info *info);//
-void	shape_position(int **map, t_info *info);//
+void	check_the_value(int y, int **map, t_info *info, int v);//
+void	put_heatmap_info(int **map, t_info *info);//
+void	shape_position(t_info *info);
 
 //main.c
 t_info  *read_info_from_map(void);
@@ -48,5 +47,10 @@ int		**add_piece_info(char *line, t_info *info);
 
 //read_info.c
 void	add_size_info(char *line, t_info *info, int i);
+
+//map.c
+void	heatmap(t_info *info);
+void	make_map_line(char *line, t_info *info);
+void	make_heatmap(t_info *info);
 
 #endif
