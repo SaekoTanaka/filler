@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:21 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/13 15:26:02 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:58:58 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,11 @@ void	add_size_info(char *line, t_info *info, int i)
 	{
 		info->size_y = ft_atoi(split2[1]);
 		info->size_x = ft_atoi(split2[2]);
+		info->map = init_map(info);
 	}
 	if (i == 1)
 	{
 		info->piece_size_y = ft_atoi(split2[1]);
 		info->piece_size_x = ft_atoi(split2[2]);
 	}
-}
-
-int			**add_piece_info(char *line, t_info *info)
-{
-	int		i;
-	char	*new_line;
-	int		**piece_map;
-
-	add_size_info(line, info, 1);
-	if (!(piece_map = malloc(sizeof(int *) * info->piece_size_y)))
-		return ;
-	i = 0;
-	while (i < info->piece_size_y)
-	{
-		if (!(piece_map[i] = malloc(sizeof(int) * info->piece_size_x)))
-			return ;
-		i++;
-	}
-	piece_map_init(piece_map, info);
-	//i = 0;
-	//while (get_next_line(1, &new_line) > 0 && i < info->piece_size_y)
-	//{	
-	//	make_piece_map(piece_map[i], new_line, info);
-	//	i++;
-	//	free(new_line);
-	//}
-	return (piece_map);
 }

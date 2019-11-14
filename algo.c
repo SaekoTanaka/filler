@@ -6,11 +6,29 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:38 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/13 14:47:18 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/13 17:58:41 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void	init_dot(t_info *info)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < info->size_y)
+	{
+		x = 0;
+		while (x < info->size_x)
+		{
+			info->map[y][x] = -3;
+			x++;
+		}
+		y++;
+	}
+}
 
 int			**init_map(t_info *info)
 {
@@ -28,12 +46,13 @@ int			**init_map(t_info *info)
 			return (NULL);
 		i++;
 	}
+	init_dot(info);
 	return (map);
 }
 
-void	get_each_line_info(t_info *info, int **map, char *line, int y)
+void	get_each_line_info(t_info *info, char *line, int y)
 {
-	int	x;
+	int		x;
 	char	**split;
 
 	split = ft_strsplit(line, ' ');
@@ -43,11 +62,12 @@ void	get_each_line_info(t_info *info, int **map, char *line, int y)
 	while (split[1][x] != '\0')
 	{
 		if (split[1][x] == '.')
-			map[y][x] = 0;
+			info->map[y][x] = 0;
 		else if (split[1][x] == (int)info->x_or_o || split[1][x] == (int)info->x_or_o + 32)
-			map[y][x] = -1;
+			info->map[y][x] = -1;
+		//else if (split[1][x] != '.')
 		else
-			map[y][x] = -2;
+			info->map[y][x] = -2;
 		x++;		
 	}
 }
@@ -83,20 +103,20 @@ void	put_heatmap_info(int **map, t_info *info)
 	}
 }
 
-void	make_heatmap(int **map, t_info *info)
-{
-	char	*line;
-	int		y;
-
-	y = 0;
-	while (get_next_line(1, &line) > 0)
-	{
-		get_each_line_info(info, map, line, y);
-		free(line);
-		y++;
-	}
-	put_heatmap_info(map, info);
-}
+//void	make_heatmap(int **map, t_info *info)
+//{
+//	char	*line;
+//	int		y;
+//
+//	y = 0;
+//	while (get_next_line(1, &line) > 0)
+//	{
+//		get_each_line_info(info, map, line, y);
+//		free(line);
+//	 	y++;
+//	}
+//	put_heatmap_info(map, info);
+//}
 
 void	shape_position(int **map, t_info *info)
 {

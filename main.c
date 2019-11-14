@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/13 15:31:33 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/13 17:52:49 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 #include "filler.h"
 
+void	change_x_o(t_info *info)
+{
+	if (info->x_or_o == 88)
+		info->x_or_o = 79;
+	else
+		info->x_or_o = 88;
+}
 
 void	init_info(t_info *info)
 {
@@ -29,8 +36,6 @@ t_info  	*read_info_from_map(void)
 {
 	char    *line;
 	t_info  *info;
-	int		n_piece;
-	int		n_heatmap;
 	
 	info = malloc(sizeof(t_info));
 	init_info(info);
@@ -41,9 +46,10 @@ t_info  	*read_info_from_map(void)
 		else if (ft_strncmp(line, "Piece ", 6) == 0)
 			info->piece_map = add_piece_info(line, info);
 		else if (line && line[0] >= '0' && line[0] <= '9')
-			make_heatmap(line, info);
+			make_map_line(line, info);
 		else if (line && (line[0] == '*' || line[0] == '.'))
 			make_piece(line, info);//done?
+		change_x_o(info);
 		free(line);
 	}
 	return (info);
@@ -52,12 +58,12 @@ t_info  	*read_info_from_map(void)
 int	main(int ac, char **av)
 {
 	t_info	*info;
-	int		**map;
 	
 	while (1)
 	{
 		info = read_info_from_map();
-		map = init_map(info);
+		heatmap(info);
+		//free??
 	}
 	return (0);
 }
