@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:38 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 10:41:20 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 13:50:00 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,31 @@ void	get_each_line_info(t_info *info, char *line, int y)
 	}
 }
 
-void	check_shape_position(t_info *info)
+void	compare_piece_postion(t_p_p *min)
 {
 	
+}
+
+t_p_p		*check_piece_position(t_info *info)
+{
+	int	y;
+	int	x;
+	t_p_p	*min;
+	
+	if (!(min == malloc(sizeof(t_p_p)))//?
+		return (NULL);
+	y = 0;
+	while (y <= info->size_y - info->piece_size_y)
+	{
+		x = 0;
+		while (x <= info->size_x - info->piece_size_x)
+		{
+			compare_piece_position(min);
+			x++;
+		}
+		y++;
+	}
+	return (min);
 }
 
 
