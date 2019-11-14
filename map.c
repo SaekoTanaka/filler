@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:09:33 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 13:41:37 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 14:22:28 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	heatmap(t_info *info)
 
 	make_heatmap(info);
 	piece_pos = check_piece_position(info);
-	rewrite(info);//?
+	rewrite(info, piece_pos);//?
 }
 
 void	put_value(t_info *info, int x, int y, int i)

@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:38 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 13:50:00 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 14:21:47 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,30 @@ void	get_each_line_info(t_info *info, char *line, int y)
 	}
 }
 
-void	compare_piece_postion(t_p_p *min)
+void	compare_piece_postion(t_p_p *min, t_info *info, int x, int y)
 {
-	
+	int	total;
+	int	ix;
+	int	iy;
+
+	total = 0;
+	iy = 0;
+	while (iy < info->piece_size_y)
+	{
+		ix = 0;
+		while (ix < info->piece_size_x)
+		{
+			total += info->map[y + iy][x + ix] * info->piece_map[iy][ix];
+			ix++;
+		}
+		iy++;
+	}
+	if (min->min > total)
+	{
+		min->x = x;
+		min->y = y;
+		min->min = total;
+	}
 }
 
 t_p_p		*check_piece_position(t_info *info)
@@ -83,15 +104,18 @@ t_p_p		*check_piece_position(t_info *info)
 	int	x;
 	t_p_p	*min;
 	
-	if (!(min == malloc(sizeof(t_p_p)))//?
+	if (!(min == malloc(sizeof(t_p_p))))
 		return (NULL);
+	min->x = -1;
+	min->y = -1;
+	min->min = -1;
 	y = 0;
 	while (y <= info->size_y - info->piece_size_y)
 	{
 		x = 0;
 		while (x <= info->size_x - info->piece_size_x)
 		{
-			compare_piece_position(min);
+			compare_piece_position(min, info, x, y);
 			x++;
 		}
 		y++;
