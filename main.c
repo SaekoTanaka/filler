@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 13:34:21 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 15:21:54 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "filler.h"
 
-void	change_x_o(t_info *info)
+void	switch_x_o(t_info *info)
 {
 	if (info->x_or_o == 88)
 		info->x_or_o = 79;
@@ -26,10 +26,16 @@ void	init_info(t_info *info)
 {
 	info->size_x = 0;
 	info->size_y = 0;
-	info->x_or_o = 0;
+	info->x_or_o = 79;
 	info->piece_size_x = 0;
 	info->piece_size_y = 0;
 	info->piece_map = NULL;
+	info->map = NULL;
+}
+
+void	clean_info(t_info *info)
+{
+
 }
 
 t_info  	*read_info_from_map(void)
@@ -37,8 +43,6 @@ t_info  	*read_info_from_map(void)
 	char    *line;
 	t_info  *info;
 	
-	info = malloc(sizeof(t_info));
-	init_info(info);
 	while (get_next_line(1, &line) > 0)
 	{
 		if (ft_strncmp(line, "Plateau ", 8) == 0)
@@ -48,22 +52,42 @@ t_info  	*read_info_from_map(void)
 		else if (line && line[0] >= '0' && line[0] <= '9')
 			make_map_line(line, info);
 		else if (line && (line[0] == '*' || line[0] == '.'))
-			make_piece(line, info);//done?
-		change_x_o(info);
+			make_piece(line, info);
 		free(line);
 	}
 	return (info);
 }
 
+
+void	re_write(t_p_p *p_p)
+{
+	char	*x;
+	char	*y;
+
+	x = ft_itoa(p_p->x);
+	y = ft_itoa(p_p->y);
+	ft_putstr(x);
+	ft_putchar(' ');
+	ft_putstr(y);
+	ft_putchar('\n');
+}
+
 int	main(int ac, char **av)
 {
 	t_info	*info;
+	t_p_p	*p_p;
 	
-	while (1)
+	info = malloc(sizeof(t_info));
+	init_info(info);
+	while (1)//till when??
 	{
 		info = read_info_from_map();
-		heatmap(info);
-		//free??
+		p_p = heatmap(info);
+		if (p_p->min = -1)
+			break ;
+		re_write(p_p);
+		switch_x_o(info);
+		clean_info(info);//keep x_o info
 	}
 	return (0);
 }

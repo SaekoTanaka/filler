@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:35 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 13:41:15 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 15:08:27 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,20 @@ t_p_p	*check_piece_position(t_info *info);
 //main.c
 t_info  *read_info_from_map(void);
 void	init_info(t_info *info);
-void	change_x_o(t_info *info);
+void	switch_x_o(t_info *info);
 
 //piece.c
 void	piece_map_init(int **piece_map, t_info *info);
 void	make_piece_map(int *piece_map_line, char *new_line, t_info *info);
 void	make_piece(char *line, t_info *info);
 int		**add_piece_info(char *line, t_info *info);
+int		piece_is_valid(t_info *info, int x, int y);
 
 //read_info.c
 void	add_size_info(char *line, t_info *info, int i);
 
 //map.c
-void	heatmap(t_info *info);
+t_p_p	*heatmap(t_info *info);
 void	make_map_line(char *line, t_info *info);
 void	make_heatmap(t_info *info);
 

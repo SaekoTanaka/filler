@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:09:36 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 13:33:54 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 14:58:20 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,25 @@ int			**add_piece_info(char *line, t_info *info)
 	//	free(new_line);
 	//}
 	return (piece_map);
+}
+
+int		piece_is_valid(t_info *info, int x, int y)
+{
+	int	n;
+	int	ix;
+	int iy;
+
+	n = 0;
+	while (iy < info->piece_size_y)
+	{
+		ix = 0;
+		while (ix < info->piece_size_x)
+		{
+			if (info->map[y + iy][x + ix] == 0 && info->piece_map[iy][ix] == 1)
+				n++;
+			ix++;
+		}
+		iy++;
+	}
+	return (n);
 }
