@@ -6,11 +6,9 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:31:01 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:41:21 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//$$$ exec pPLAYER_NUMBER : [PLAYER_NAME]
 
 #include "filler.h"
 
