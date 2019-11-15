@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:35 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 15:08:27 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 15:45:39 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct	s_info
 	int			size_x;
 	int			size_y;
 	char		x_or_o;
-	//int			fd;??
 	int			piece_size_x;
 	int			piece_size_y;
 	int			**map;
@@ -45,7 +44,7 @@ t_p_p	*check_piece_position(t_info *info);
 //main.c
 t_info  *read_info_from_map(void);
 void	init_info(t_info *info);
-void	switch_x_o(t_info *info);
+void	clean_info(t_info *info);
 
 //piece.c
 void	piece_map_init(int **piece_map, t_info *info);

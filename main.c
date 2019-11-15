@@ -6,21 +6,13 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 15:21:54 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:25:50 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //$$$ exec pPLAYER_NUMBER : [PLAYER_NAME]
 
 #include "filler.h"
-
-void	switch_x_o(t_info *info)
-{
-	if (info->x_or_o == 88)
-		info->x_or_o = 79;
-	else
-		info->x_or_o = 88;
-}
 
 void	init_info(t_info *info)
 {
@@ -35,7 +27,16 @@ void	init_info(t_info *info)
 
 void	clean_info(t_info *info)
 {
-
+	if (info->x_or_o == 88)
+		info->x_or_o = 79;
+	else
+		info->x_or_o = 88;
+	info->size_x = 0;
+	info->size_y = 0;
+	info->piece_size_x = 0;
+	info->piece_size_y = 0;
+	info->piece_map = NULL;
+	info->map = NULL;
 }
 
 t_info  	*read_info_from_map(void)
@@ -58,7 +59,6 @@ t_info  	*read_info_from_map(void)
 	return (info);
 }
 
-
 void	re_write(t_p_p *p_p)
 {
 	char	*x;
@@ -72,6 +72,26 @@ void	re_write(t_p_p *p_p)
 	ft_putchar('\n');
 }
 
+void	free_maps(t_info *info)
+{
+	int	y;
+
+	y = 0;
+	while (y < info->size_y)
+	{
+		free(info->map[y]);
+		y++;
+	}
+	free(info->map);
+	y = 0;
+	while (y < info->piece_size_y)
+	{
+		free(info->piece_map[y]);
+		y++;
+	}
+	free(info->piece_map);
+}
+
 int	main(int ac, char **av)
 {
 	t_info	*info;
@@ -79,15 +99,16 @@ int	main(int ac, char **av)
 	
 	info = malloc(sizeof(t_info));
 	init_info(info);
-	while (1)//till when??
+	while (1)
 	{
 		info = read_info_from_map();
 		p_p = heatmap(info);
 		if (p_p->min = -1)
 			break ;
 		re_write(p_p);
-		switch_x_o(info);
-		clean_info(info);//keep x_o info
+		free_maps(info);
+		clean_info(info);
+		free(p_p);
 	}
 	return (0);
 }
