@@ -6,14 +6,14 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:35 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 15:45:39 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:36:03 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 #define FILLER_H
 
-#include "libft.h"
+#include "libft/libft.h"
 
 typedef struct	s_info
 {
@@ -40,7 +40,7 @@ void	check_the_value(int y, int **map, t_info *info, int v);//
 void	put_heatmap_info(int **map, t_info *info);//
 void	shape_position(t_info *info);
 t_p_p	*check_piece_position(t_info *info);
-
+void	compare_pp(t_p_p *min, t_info *info, int x, int y);
 //main.c
 t_info  *read_info_from_map(void);
 void	init_info(t_info *info);
@@ -52,7 +52,7 @@ void	make_piece_map(int *piece_map_line, char *new_line, t_info *info);
 void	make_piece(char *line, t_info *info);
 int		**add_piece_info(char *line, t_info *info);
 int		piece_is_valid(t_info *info, int x, int y);
-
+t_p_p		*check_piece_position(t_info *info);
 //read_info.c
 void	add_size_info(char *line, t_info *info, int i);
 

@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:09:33 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:12:29 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:31:39 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	put_value(t_info *info, int x, int y, int i)
 {
 	int		*tmp;
 
+	tmp = NULL;
 	if (y != 0)
 		tmp = &info->map[y - 1][x];
 	if (*tmp == -3)

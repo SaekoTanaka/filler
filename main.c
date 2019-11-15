@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:25:50 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:31:01 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_info  	*read_info_from_map(void)
 	char    *line;
 	t_info  *info;
 	
+	info = NULL;
 	while (get_next_line(1, &line) > 0)
 	{
 		if (ft_strncmp(line, "Plateau ", 8) == 0)
@@ -97,13 +98,15 @@ int	main(int ac, char **av)
 	t_info	*info;
 	t_p_p	*p_p;
 	
+	(void)ac;
+	(void)av;
 	info = malloc(sizeof(t_info));
 	init_info(info);
 	while (1)
 	{
 		info = read_info_from_map();
 		p_p = heatmap(info);
-		if (p_p->min = -1)
+		if (p_p->min == -1)
 			break ;
 		re_write(p_p);
 		free_maps(info);

@@ -2,7 +2,7 @@ NAME = stanaka.filler
 
 SRC = algo.c main.c map.c piece.c read_info.c
 
-FLAG = Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror
 
 HEAD = -I filler.h
 

@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:09:36 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:11:12 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:33:42 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	make_piece(char *line, t_info *info)
 	i = 0;
 	while (i < info->piece_size_y)
 	{
-		if (info->piece_map[i] == -1)
+		if (info->piece_map[i][0] == -1)
 			break ;
 		i++;
 	}
@@ -64,17 +64,16 @@ void	make_piece(char *line, t_info *info)
 int			**add_piece_info(char *line, t_info *info)
 {
 	int		i;
-	char	*new_line;
 	int		**piece_map;
 
 	add_size_info(line, info, 1);
 	if (!(piece_map = malloc(sizeof(int *) * info->piece_size_y)))
-		return ;
+		return (NULL);
 	i = 0;
 	while (i < info->piece_size_y)
 	{
 		if (!(piece_map[i] = malloc(sizeof(int) * info->piece_size_x)))
-			return ;
+			return (NULL);
 		i++;
 	}
 	piece_map_init(piece_map, info);
@@ -95,6 +94,7 @@ int		piece_is_valid(t_info *info, int x, int y)
 	int iy;
 
 	n = 0;
+	iy = 0;
 	while (iy < info->piece_size_y)
 	{
 		ix = 0;

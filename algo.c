@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:38 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:17:25 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/14 17:36:18 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	get_each_line_info(t_info *info, char *line, int y)
 	}
 }
 
-void	compare_piece_postion(t_p_p *min, t_info *info, int x, int y)
+void	compare_pp(t_p_p *min, t_info *info, int x, int y)
 {
 	int	total;
 	int	ix;
@@ -105,6 +105,7 @@ t_p_p		*check_piece_position(t_info *info)
 	int	x;
 	t_p_p	*min;
 	
+	min = NULL;
 	if (!(min == malloc(sizeof(t_p_p))))
 		return (NULL);
 	min->x = -1;
@@ -117,7 +118,7 @@ t_p_p		*check_piece_position(t_info *info)
 		while (x <= info->size_x - info->piece_size_x)
 		{
 			if (piece_is_valid(info, x, y) == 1)//piece pos is valid or not
-				compare_piece_position(min, info, x, y);
+				compare_pp(min, info, x, y);
 			x++;
 		}
 		y++;
