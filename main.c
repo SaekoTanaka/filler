@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 12:50:45 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:41:21 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/15 17:46:10 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	init_info(t_info *info)
 {
 	info->size_x = 0;
 	info->size_y = 0;
-	info->x_or_o = 79;
+	info->player = 0;
+	//if (player == 1)
+	//	info->x_or_o = 79;
+	//else
+	//	info->x_or_o = 88;
 	info->piece_size_x = 0;
 	info->piece_size_y = 0;
 	info->piece_map = NULL;
@@ -25,10 +29,10 @@ void	init_info(t_info *info)
 
 void	clean_info(t_info *info)
 {
-	if (info->x_or_o == 88)
-		info->x_or_o = 79;
-	else
-		info->x_or_o = 88;
+//	if (info->x_or_o == 88)
+//		info->x_or_o = 79;
+//	else
+//		info->x_or_o = 88;
 	info->size_x = 0;
 	info->size_y = 0;
 	info->piece_size_x = 0;
@@ -53,6 +57,8 @@ t_info  	*read_info_from_map(void)
 			make_map_line(line, info);
 		else if (line && (line[0] == '*' || line[0] == '.'))
 			make_piece(line, info);
+		else if (line && line[0] == '$')
+			make_player(line, info);
 		free(line);
 	}
 	return (info);
@@ -107,9 +113,9 @@ int	main(int ac, char **av)
 		if (p_p->min == -1)
 			break ;
 		re_write(p_p);
-		free_maps(info);
+		//free_maps(info);
 		clean_info(info);
-		free(p_p);
+		//free(p_p);
 	}
 	return (0);
 }

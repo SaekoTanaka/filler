@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:13:38 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:36:18 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/15 15:25:57 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	get_each_line_info(t_info *info, char *line, int y)
 		//	info->map[y][x] = 0;
 		//else if (split[1][x] == (int)info->x_or_o || split[1][x] == (int)info->x_or_o + 32)
 		if (split[1][x] == info->x_or_o || split[1][x] == info->x_or_o + 32)
-			info->map[y][x] = 0;
-		else if (split[1][x] != '.')
 			info->map[y][x] = -2;
+		else if (split[1][x] != '.')
+			info->map[y][x] = 0;
 		x++;		
 	}
 }

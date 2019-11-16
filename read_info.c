@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:21 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:08:22 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/15 17:44:22 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,15 @@ void	add_size_info(char *line, t_info *info, int i)
 		info->piece_size_y = ft_atoi(split2[1]);
 		info->piece_size_x = ft_atoi(split2[2]);
 	}
+}
+
+void	make_player(char *line, t_info *info)
+{
+	char	**split;
+
+	split = ft_strsplit(line, ' ');
+	if (split[2][1] == '1')
+		info->player = 79;
+	else
+		info->player = 88;	
 }

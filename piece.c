@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:09:36 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:33:42 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/15 15:27:24 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		piece_is_valid(t_info *info, int x, int y)
 		ix = 0;
 		while (ix < info->piece_size_x)
 		{
-			if (info->map[y + iy][x + ix] == 0 && info->piece_map[iy][ix] == 1)
+			if (info->map[y + iy][x + ix] == -2 && info->piece_map[iy][ix] == 1)
 				n++;
 			ix++;
 		}

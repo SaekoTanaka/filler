@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:10:35 by stanaka           #+#    #+#             */
-/*   Updated: 2019/11/14 17:36:03 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/11/15 17:45:12 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_info
 	int			size_x;
 	int			size_y;
 	char		x_or_o;
+	int			player;
 	int			piece_size_x;
 	int			piece_size_y;
 	int			**map;
@@ -55,6 +56,7 @@ int		piece_is_valid(t_info *info, int x, int y);
 t_p_p		*check_piece_position(t_info *info);
 //read_info.c
 void	add_size_info(char *line, t_info *info, int i);
+void	make_player(char *line, t_info *info);
 
 //map.c
 t_p_p	*heatmap(t_info *info);
